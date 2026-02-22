@@ -1,0 +1,20 @@
+# Dependencies - all node_modules everywhere
+node_modules/
+**/node_modules/
+
+# Environment variables - NEVER commit these (contain DB credentials & secrets)
+backend/config.env
+**/.env
+*.env
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
