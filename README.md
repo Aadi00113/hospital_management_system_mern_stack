@@ -4,6 +4,13 @@ A full-stack MERN hospital management system with a patient-facing frontend, an 
 
 ---
 
+## 🔗 Live Demo
+
+- **Patient Website:** [hospital-management-system-mern-sta-peach.vercel.app](https://hospital-management-system-mern-sta-peach.vercel.app/)
+- **Admin Dashboard:** [nexorahealth-admin-dashboard.vercel.app](https://nexorahealth-admin-dashboard.vercel.app/)
+
+---
+
 ## 🚀 Tech Stack
 
 | Layer | Technologies |
