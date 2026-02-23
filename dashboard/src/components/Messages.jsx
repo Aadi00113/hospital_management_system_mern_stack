@@ -11,7 +11,7 @@ const Messages = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/v1/message/getall", { withCredentials: true });
+        const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/message/getall`, { withCredentials: true });
         setMessages(data.messages);
       } catch (error) { console.log(error.response.data.message); }
     };

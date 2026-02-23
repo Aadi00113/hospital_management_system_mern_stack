@@ -14,7 +14,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/v1/appointment/getall", { withCredentials: true });
+        const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/appointment/getall`, { withCredentials: true });
         setAppointments(data.appointments);
       } catch { setAppointments([]); }
     };
@@ -23,7 +23,7 @@ const Dashboard = () => {
 
   const handleUpdateStatus = async (appointmentId, status) => {
     try {
-      const { data } = await axios.put(`http://localhost:5000/api/v1/appointment/update/${appointmentId}`, { status }, { withCredentials: true });
+      const { data } = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/v1/appointment/update/${appointmentId}`, { status }, { withCredentials: true });
       setAppointments((prev) => prev.map((a) => (a._id === appointmentId ? { ...a, status } : a)));
       toast.success(data.message);
     } catch (error) { toast.error(error.response.data.message); }

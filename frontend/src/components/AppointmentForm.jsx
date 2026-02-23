@@ -23,7 +23,7 @@ const AppointmentForm = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/v1/user/doctors", { withCredentials: true });
+        const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/doctors`, { withCredentials: true });
         setDoctors(data.doctors);
       } catch { }
     };
@@ -33,7 +33,7 @@ const AppointmentForm = () => {
   const handleAppointment = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:5000/api/v1/appointment/post",
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/appointment/post`,
         {
           firstName, lastName, email, phone, nic, dob, gender, appointment_date: appointmentDate, department,
           doctor_firstName: doctorFirstName, doctor_lastName: doctorLastName, hasVisited: Boolean(hasVisited), address

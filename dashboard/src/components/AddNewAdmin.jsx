@@ -20,7 +20,7 @@ const AddNewAdmin = () => {
     e.preventDefault();
     try {
       await axios
-        .post("http://localhost:5000/api/v1/user/admin/addnew",
+        .post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/admin/addnew`,
           { firstName, lastName, email, phone, nic, dob, gender, password },
           { withCredentials: true, headers: { "Content-Type": "application/json" } })
         .then((res) => {

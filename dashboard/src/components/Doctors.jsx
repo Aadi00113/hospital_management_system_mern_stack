@@ -12,7 +12,7 @@ const Doctors = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/v1/user/doctors", { withCredentials: true });
+        const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/doctors`, { withCredentials: true });
         setDoctors(data.doctors);
       } catch (error) { toast.error(error.response.data.message); }
     };
