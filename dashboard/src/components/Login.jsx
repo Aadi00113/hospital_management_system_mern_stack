@@ -7,7 +7,6 @@ import axios from "axios";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
   const navigateTo = useNavigate();
 
@@ -16,13 +15,13 @@ const Login = () => {
     try {
       await axios
         .post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/login`,
-          { email, password, confirmPassword, role: "Admin" },
+          { email, password, role: "Admin" },
           { withCredentials: true, headers: { "Content-Type": "application/json" } })
         .then((res) => {
           toast.success(res.data.message);
           setIsAuthenticated(true);
           navigateTo("/");
-          setEmail(""); setPassword(""); setConfirmPassword("");
+          setEmail(""); setPassword("");
         });
     } catch (error) { toast.error(error.response.data.message); }
   };
@@ -48,10 +47,6 @@ const Login = () => {
             <div>
               <label className="text-sm font-semibold text-gray-600 mb-1.5 block">Password</label>
               <input type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} className={inputCls} />
-            </div>
-            <div>
-              <label className="text-sm font-semibold text-gray-600 mb-1.5 block">Confirm Password</label>
-              <input type="password" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className={inputCls} />
             </div>
             <div className="flex justify-center mt-2">
               <button type="submit" className="w-full py-3.5 text-white font-bold text-lg rounded-xl bg-theme-gradient-r hover:opacity-90 transition-opacity">
